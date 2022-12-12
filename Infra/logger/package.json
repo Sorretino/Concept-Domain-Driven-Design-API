@@ -1,6 +1,0 @@
-{
-  "name": "logger",
-  "description": "this is an abstraction and log tagger",
-  "private": true,
-  "main": "./consoleLogger"
-}

@@ -20,7 +20,7 @@ const LogRepository = {
   async getAll() {
     new LogDB({});
     const result = await LogDB.find();
-    return result.map((item) => Log.create(item));
+    return result;
   },
 };
 

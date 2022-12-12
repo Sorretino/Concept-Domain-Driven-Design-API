@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 
 // imports routes
-import { AuthRequests, AdminRequests, MarvelRequests } from "./Request";
+import { AuthRequests, AdminRequests, MarvelRequests, LogRequests } from "./Request";
 
 class Api {
   public app: Application;
@@ -30,6 +30,7 @@ class Api {
     this.app.use(AuthRequests);
     this.app.use(AdminRequests);
     this.app.use(MarvelRequests);
+    this.app.use(LogRequests);
   }
 }
 

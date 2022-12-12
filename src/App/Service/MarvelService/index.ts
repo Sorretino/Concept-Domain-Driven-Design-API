@@ -8,12 +8,12 @@ const MARVEL_SEC: string = process.env.MARVEL_SEC ?? "";
 
 class MarvelService {
   async getCharacters(req: Request, res: Response) {
-    const { offset, limit } = req.params;
-    const URI = `characters${MARVEL_SEC}&offset=${offset ? offset : 0}&limit=${limit ? limit : 20}`;
+    const { offset, limit } = req.query;
+    const URI = `characters${MARVEL_SEC}&offset=${offset || 0}&limit=${limit || 20}`;
     const { data } = await api.get(URI);
     const props: LogProps = {
       url: "characters",
-      params: `offset=${offset ? offset : 0} | limit=${limit ? limit : 20}`,
+      params: `offset=${offset || 0} | limit=${limit || 20}`,
     };
     await CreateLog.execute(props);
     res.status(200).json(data);

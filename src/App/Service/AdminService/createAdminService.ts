@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import CreateAdmin from "~/Domain/UseCases/ManageAdmin/CreateAdmin";
-//Domain/UseCases/ManageAdmin/CreateAdmin
 
 class CreateAdminService {
   async handle(req: Request, res: Response) {

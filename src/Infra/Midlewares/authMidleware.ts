@@ -1,7 +1,11 @@
 import type { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { promisify } from "util";
+import { secret } from "~/Infra/config/auth";
 
+type secret = {
+  secret: string;
+};
 const authMidleware = {
   async handle(req: Request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization;
@@ -21,16 +25,15 @@ const authMidleware = {
     }
     // try validar token se existe
     try {
-      const decoded = await promisify(jwt.verify)(token);
+      const decoded: any = await promisify(jwt.verify)(token, secret);
       if (!decoded) {
         return res.status(401).json({
           message: "O token está expirado!",
         });
-      } else {
-        req.user_id = decoded.id;
-
-        next();
       }
+      //req.user_id = decoded.id;
+      req.user = { id: decoded.id };
+      next();
     } catch {
       return res.status(401).json({
         message: "O token está inválido!",

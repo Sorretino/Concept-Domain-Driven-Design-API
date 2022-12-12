@@ -14,7 +14,7 @@ const AdminRequests = Router();
 AdminRequests.get("/admin", authMidleware.handle, readAdminService.handle);
 AdminRequests.get("/admin/:id", authMidleware.handle, findAdminService.handle);
 AdminRequests.post("/admin", createAdminService.handle);
-AdminRequests.put("/admin/:id", authMidleware.handle, updateAdminService.handle);
+// AdminRequests.put("/admin/:id", authMidleware.handle, updateAdminService.);
 AdminRequests.delete("/admin/:id", authMidleware.handle, deleteAdminService.handle);
 
 export default AdminRequests;

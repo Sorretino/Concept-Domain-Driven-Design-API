@@ -50,7 +50,7 @@ const AdminRepository = {
   async getAll() {
     new AdminDB({});
     const result = await AdminDB.find();
-    return result.map((item) => Admin.create(item));
+    return result;
   },
 };
 
